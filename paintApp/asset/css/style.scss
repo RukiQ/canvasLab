@@ -1,0 +1,14 @@
+html, body{
+    height: 100%;
+    overflow: hidden;
+}
+
+.painter {
+    position: absolute;
+    box-shadow: 2px 2px 30px 5px grey;  // h-shadow v-shadow blur spread color inset
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
