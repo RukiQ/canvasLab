@@ -2,7 +2,7 @@
  * @Author: Ruth
  * @Date:   2017-03-27 14:42:07
  * @Last Modified by:   Ruth92
- * @Last Modified time: 2017-03-28 11:01:04
+ * @Last Modified time: 2017-03-28 11:38:23
  */
 
 'use strict';
@@ -88,6 +88,8 @@ class Painter {
         // 获取元素宽、高及距窗口上下左右距离
         const rect = this.cva.getBoundingClientRect();
         // 相当于const rect = $('.painter').offset();
+        console.log(this.cva.offsetLeft);
+        console.log(this.cva.offsetTop);
 
         switch (e.type) {
             case 'touchstart':
