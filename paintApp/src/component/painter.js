@@ -2,20 +2,31 @@
  * @Author: Ruth
  * @Date:   2017-03-27 14:42:07
  * @Last Modified by:   Ruth92
- * @Last Modified time: 2017-03-28 11:38:23
+ * @Last Modified time: 2017-03-28 16:27:18
  */
 
 'use strict';
 
-class Painter {
+import CvaConfig from './cvaConfig.js';
+
+export default class Painter extends CvaConfig {
     constructor() {
+        super();
         this.init();
     }
 
     // 初始化选择器
     initSelectors() {
-        this.cva = document.getElementById('js-cva');
+        this.cva = document.getElementById('js-painter');
         this.ctx = this.cva.getContext('2d');
+
+        return this;
+    }
+
+    // 设置画布背景及透明度
+    _setBg() {
+        this.ctx.globalAlpha = 0.7;
+        this.setCvaBg();
 
         return this;
     }
@@ -24,46 +35,6 @@ class Painter {
         this.lastX = 0;
         this.lastY = 0;
         this.isPaint = false;
-
-        return this;
-    }
-
-    // 属性设置
-    setConfig() {
-        this.config = {
-            cvaW: 800,
-            cvaH: 600,
-            cvaBg: '#fff',
-            lineWidth: 2,
-            lineJoin: 'round',
-            strokeStyle: 'red'
-        };
-
-        return this;
-    }
-
-    // 画板宽高设置
-    // 注意此处不能在 css 中设置，像素会失真，会导致不能获取正确的坐标
-    setCvaWH() {
-        this.cva.setAttribute('width', this.config.cvaW);
-        this.cva.setAttribute('height', this.config.cvaH);
-
-        return this;
-    }
-
-    // 画板背景设置
-    setCvaBg() {
-        this.ctx.fillStyle = this.config.cvaBg;
-        this.ctx.fillRect(0, 0, this.config.cvaW, this.config.cvaH);
-
-        return this;
-    }
-
-    // 画笔设置
-    setPen() {
-        this.ctx.lineWidth = this.config.lineWidth;
-        this.ctx.lineJoin = this.config.lineJoin;
-        this.ctx.strokeStyle = this.config.strokeStyle;
 
         return this;
     }
@@ -88,8 +59,7 @@ class Painter {
         // 获取元素宽、高及距窗口上下左右距离
         const rect = this.cva.getBoundingClientRect();
         // 相当于const rect = $('.painter').offset();
-        console.log(this.cva.offsetLeft);
-        console.log(this.cva.offsetTop);
+        // 相当于const rect = { left: this.cva.offsetLeft, top: this.cva.offsetTop }
 
         switch (e.type) {
             case 'touchstart':
@@ -136,11 +106,7 @@ class Painter {
 
     init() {
         this.initSelectors().initData();
-        this.setConfig().setCvaWH().setCvaBg().setPen();
+        this.setCvaWH()._setBg().setPen();
         this.initEvents();
     }
 }
-
-const painter = new Painter();
-
-export default painter;

@@ -3,12 +3,29 @@ html, body{
     overflow: hidden;
 }
 
-.painter {
+.view {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+}
+
+.blue-border {
+    border: 2px solid blue;
+}
+
+.painter, .baseplate {
     position: absolute;
     box-shadow: 2px 2px 30px 5px grey;  // h-shadow v-shadow blur spread color inset
     margin: auto;
-    top: 0;
+    top: 100px;
     bottom: 0;
     left: 0;
     right: 0;
 }
+
+.baseplate {
+    z-index: -1;
+}
+
