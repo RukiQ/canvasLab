@@ -2,7 +2,7 @@
  * @Author: Ruth
  * @Date:   2017-03-27 14:42:07
  * @Last Modified by:   Ruth92
- * @Last Modified time: 2017-03-27 22:31:58
+ * @Last Modified time: 2017-03-28 11:01:04
  */
 
 'use strict';
@@ -31,9 +31,9 @@ class Painter {
     // 属性设置
     setConfig() {
         this.config = {
-            layerW: 800,
-            layerH: 600,
-            layerBg: '#fff',
+            cvaW: 800,
+            cvaH: 600,
+            cvaBg: '#fff',
             lineWidth: 2,
             lineJoin: 'round',
             strokeStyle: 'red'
@@ -44,17 +44,17 @@ class Painter {
 
     // 画板宽高设置
     // 注意此处不能在 css 中设置，像素会失真，会导致不能获取正确的坐标
-    setWH() {
-        this.cva.setAttribute('width', this.config.layerW);
-        this.cva.setAttribute('height', this.config.layerH);
+    setCvaWH() {
+        this.cva.setAttribute('width', this.config.cvaW);
+        this.cva.setAttribute('height', this.config.cvaH);
 
         return this;
     }
 
     // 画板背景设置
-    setLayer() {
-        this.ctx.fillStyle = this.config.layerBg;
-        this.ctx.fillRect(0, 0, this.config.layerW, this.config.layerH);
+    setCvaBg() {
+        this.ctx.fillStyle = this.config.cvaBg;
+        this.ctx.fillRect(0, 0, this.config.cvaW, this.config.cvaH);
 
         return this;
     }
@@ -134,7 +134,7 @@ class Painter {
 
     init() {
         this.initSelectors().initData();
-        this.setConfig().setWH().setLayer().setPen();
+        this.setConfig().setCvaWH().setCvaBg().setPen();
         this.initEvents();
     }
 }
