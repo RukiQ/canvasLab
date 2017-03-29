@@ -2,7 +2,7 @@
  * @Author: Ruth
  * @Date:   2017-03-28 14:49:37
  * @Last Modified by:   Ruth92
- * @Last Modified time: 2017-03-28 15:08:44
+ * @Last Modified time: 2017-03-29 15:51:17
  */
 
 'use strict';
@@ -43,5 +43,10 @@ export default class CvaConfig {
         this.ctx.strokeStyle = this.config.strokeStyle;
 
         return this;
+    }
+
+    // 清除图层，如果不清除，会叠加显示，导致不透明
+    clearBg() {
+        this.ctx.clearRect(0, 0, this.config.cvaW, this.config.cvaH);
     }
 }

@@ -14,7 +14,8 @@ class App {
         const painter = new Painter();
         const basePlate = new BasePlate();
         const viewer = new Viewer({
-            setBasePlate: $.proxy(basePlate.setBasePlate, basePlate)
+            drawResult: $.proxy(painter.drawResult, painter), // 在painter上画图
+            setBasePlate: $.proxy(basePlate.setBasePlate, basePlate), // 在baseplate上设置
         });
     }
 }

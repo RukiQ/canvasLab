@@ -2,7 +2,7 @@
  * @Author: Ruth
  * @Date:   2017-03-27 14:42:07
  * @Last Modified by:   Ruth
- * @Last Modified time: 2017-03-29 10:16:16
+ * @Last Modified time: 2017-03-29 15:59:45
  */
 
 'use strict';
@@ -55,7 +55,7 @@ export default class Painter extends CvaConfig {
         const touches = e.changedTouches; // 获取 Touch 对象list
         const point = touches[0]; // 获取第一个 Touch 对象
 
-        // 获取元素宽、高及距窗口上下左右距离
+        // 返回元素的大小及其相对于视口的位置
         const rect = this.cva.getBoundingClientRect();
         // 相当于const rect = $('.painter').offset();
         // 相当于const rect = { left: this.cva.offsetLeft, top: this.cva.offsetTop }
@@ -85,8 +85,8 @@ export default class Painter extends CvaConfig {
 
     /**
      * 绘画函数
-     * @param  {[type]} x 触摸点x坐标
-     * @param  {[type]} y 触摸点y坐标
+     * @param  {[number]} x 触摸点x坐标
+     * @param  {[number]} y 触摸点y坐标
      * @return {[type]}   将当前坐标赋给上一个点坐标
      */
     draw(x, y) {
@@ -101,6 +101,16 @@ export default class Painter extends CvaConfig {
         // 当 'touchstart' 时，先移动到触摸点
         this.lastX = x;
         this.lastY = y;
+    }
+
+    /**
+     * 绘制拖入的图片
+     * @param  {[type]} image 视图对象，原生js <img>
+     * @return {[type]}       [description]
+     */
+    drawResult(image) {
+        this.clearBg(); // 清除画布
+        this.ctx.drawImage(image, 0, 0, this.config.cvaW, this.config.cvaH);
     }
 
     init() {
