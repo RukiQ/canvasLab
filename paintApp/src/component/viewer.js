@@ -2,7 +2,7 @@
  * @Author: Ruth
  * @Date:   2017-03-28 14:40:02
  * @Last Modified by:   Ruth
- * @Last Modified time: 2017-03-29 15:48:00
+ * @Last Modified time: 2017-03-29 16:03:44
  */
 
 'use strict';
@@ -84,7 +84,7 @@ export default class Viewer {
                     // 如果进入画布
                 } else if (this.intoPainter(clone_rect)) {
                     this.setBasePlate(); // 清空底板
-                    this.drawResult(el); // 在painter上进行绘画
+                    // this.drawResult(el); // 在painter上进行绘画
 
                     // 否则回到初始状态
                 } else {
@@ -92,7 +92,7 @@ export default class Viewer {
                 }
 
                 this.dragging = false;
-                this.$clone.remove(); // 移除clone对象
+                // this.$clone.remove(); // 移除clone对象
 
                 break;
             default:
