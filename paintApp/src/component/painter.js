@@ -1,8 +1,8 @@
 /*
  * @Author: Ruth
  * @Date:   2017-03-27 14:42:07
- * @Last Modified by:   Ruth92
- * @Last Modified time: 2017-03-28 16:27:18
+ * @Last Modified by:   Ruth
+ * @Last Modified time: 2017-03-29 10:16:16
  */
 
 'use strict';
@@ -34,7 +34,6 @@ export default class Painter extends CvaConfig {
     initData() {
         this.lastX = 0;
         this.lastY = 0;
-        this.isPaint = false;
 
         return this;
     }
