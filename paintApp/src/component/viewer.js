@@ -1,8 +1,8 @@
 /*
  * @Author: Ruth
  * @Date:   2017-03-28 14:40:02
- * @Last Modified by:   Ruth
- * @Last Modified time: 2017-03-29 16:03:44
+ * @Last Modified by:   Ruth92
+ * @Last Modified time: 2017-03-29 16:12:22
  */
 
 'use strict';
@@ -49,7 +49,7 @@ export default class Viewer {
                     'z-index': 4
                 });
 
-                // 图片起始坐标，带单位
+                // 图片起始坐标，因为带单位，所以用parseFloat进行转换
                 this.clone_start = {
                     x: parseFloat(this.$clone.css('left')),
                     y: parseFloat(this.$clone.css('top'))
