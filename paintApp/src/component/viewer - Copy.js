@@ -1,8 +1,8 @@
 /*
  * @Author: Ruth
  * @Date:   2017-03-28 14:40:02
- * @Last Modified by:   Ruth
- * @Last Modified time: 2017-03-29 15:15:06
+ * @Last Modified by:   Ruth92
+ * @Last Modified time: 2017-03-29 14:45:22
  */
 
 'use strict';
@@ -41,19 +41,33 @@ export default class Viewer {
                 this.p_start = {
                     x: point.clientX,
                     y: point.clientY
-                };
+                }
 
                 // 克隆一个对象
                 this.$clone = $el.clone();
                 this.$clone.insertBefore($el.siblings()[0]).css({
-                    'z-index': 4
+                    'z-index': 4,
+                    'border': 'none'
                 });
 
                 // 图片起始坐标，带单位
                 this.clone_start = {
                     x: parseFloat(this.$clone.css('left')),
                     y: parseFloat(this.$clone.css('top'))
-                };
+                }
+
+
+                console.log('通过css()方式获取：');
+                console.log({
+                    left: parseFloat($el.css('left')),
+                    top: parseFloat($el.css('top'))
+                });
+
+                console.log('通过offset()方式获取：');
+                console.log($el.offset());
+
+                console.log('通过getBoungdingClientRect()方式获取：');
+                console.log(el.getBoundingClientRect());
 
                 break;
             case 'touchmove':
@@ -66,24 +80,21 @@ export default class Viewer {
 
                     // 随触摸点坐标更改目标元素的坐标
                     this.$clone.css({
-                        'left': this.clone_start.x + this.diffX,
-                        'top': this.clone_start.y + this.diffY
+                        'left': this.clone_start.left + this.diffX,
+                        'top': this.clone_start.top + this.diffY
                     });
                 }
 
                 break;
             case 'touchend':
-                let clone_rect = (this.$clone)[0].getBoundingClientRect();
-
                 if (!this.dragging) {
                     this.setStyle($el); // 切换视图显示状态
                     this.setBasePlate(el); // 切换底板显示状态
 
                     // 如果进入画布
-                } else if (this.intoCanvas(clone_rect)) {
-                    console.log('aaa')
+                } else if (this.intoCanvas()) {
                     this.setBasePlate(); // 清空底板
-                    // this.drawResult(el); // 在painter上进行绘画
+                    this.drawResult(el); // 在painter上进行绘画
 
                     // 否则回到初始状态
                 } else {
@@ -101,15 +112,16 @@ export default class Viewer {
         }
     }
 
-    intoCanvas(srcRect) {
+    intoCanvas(x, y) {
+
         const rect = this.painter.getBoundingClientRect();
 
-        let cL = srcRect.left > rect.left,
-            cT = srcRect.top > rect.top,
-            cR = srcRect.right < rect.right,
-            cB = srcRect.bottom < rect.bottom;
 
-        return cL && cT && cR && cB;
+
+        // if ()
+
+
+        return false;
     }
 
     /**
