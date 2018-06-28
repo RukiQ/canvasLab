@@ -8,4 +8,16 @@
 - [BEM](https://en.bem.info/methodology/key-concepts/)：类似于组件化的概念，独立的元素搭积木拼接
 
 	
+#### 使用方式
 
+```
+npm install
+```
+
+```
+npm start
+```
+
+然后在浏览器中输入 http://localhost:8080，按F12，采用移动端模式进行访问：
+
+![image.png](https://upload-images.jianshu.io/upload_images/1632709-df4a3f2942467e54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
