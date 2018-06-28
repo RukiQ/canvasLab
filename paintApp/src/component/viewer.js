@@ -84,7 +84,7 @@ export default class Viewer {
                     // 如果进入画布
                 } else if (this.intoPainter(clone_rect)) {
                     this.setBasePlate(); // 清空底板
-                    // this.drawResult(el); // 在painter上进行绘画
+                    this.drawResult(el); // 在painter上进行绘画
 
                     // 否则回到初始状态
                 } else {
@@ -92,7 +92,7 @@ export default class Viewer {
                 }
 
                 this.dragging = false;
-                // this.$clone.remove(); // 移除clone对象
+                this.$clone.remove(); // 移除clone对象
 
                 break;
             default:
